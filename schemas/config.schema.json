@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daily-context.dev/schemas/config.schema.json",
+  "title": "Daily Context configuration",
+  "type": "object",
+  "required": ["schema_version", "name", "profile", "timezone", "week_start", "auto_update", "privacy"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "name": {"type": "string", "minLength": 1},
+    "profile": {"enum": ["general", "engineering", "research", "operations"]},
+    "workstreams": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "timezone": {"type": "string", "minLength": 1},
+    "week_start": {"const": "monday"},
+    "auto_update": {
+      "type": "object",
+      "required": ["mode", "capture_transcript", "max_transcript_bytes"],
+      "properties": {
+        "mode": {"enum": ["off", "capture"]},
+        "capture_transcript": {"type": "boolean"},
+        "max_transcript_bytes": {"type": "integer", "minimum": 0}
+      }
+    },
+    "privacy": {"type": "object"}
+  },
+  "additionalProperties": true
+}

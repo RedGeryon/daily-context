@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "daily-context capture-session --host claude",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

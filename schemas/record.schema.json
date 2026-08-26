@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daily-context.dev/schemas/record.schema.json",
+  "title": "Daily Context record",
+  "type": "object",
+  "required": ["schema_version", "id", "kind", "status", "text", "date", "created_at", "created_by", "source_ids", "related_ids"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["source", "fact", "task", "decision", "goal", "risk", "assumption", "activity", "artifact"]},
+    "status": {"type": "string", "minLength": 1},
+    "text": {"type": "string", "minLength": 1},
+    "date": {"type": "string", "format": "date"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "created_by": {"type": "string", "minLength": 1},
+    "source_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "related_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "metadata": {"type": "object"}
+  },
+  "additionalProperties": true
+}

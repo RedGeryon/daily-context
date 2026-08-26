@@ -1,0 +1,9 @@
+{
+  "name": "daily-context",
+  "version": "0.1.0",
+  "description": "A provenance-first daily work record with safe AI session capture and weekly synthesis.",
+  "author": {
+    "name": "Daily Context contributors"
+  },
+  "license": "MIT"
+}

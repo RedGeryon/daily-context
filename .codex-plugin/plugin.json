@@ -1,0 +1,25 @@
+{
+  "name": "daily-context",
+  "version": "0.1.0",
+  "description": "A provenance-first daily work record with safe AI session capture and weekly synthesis.",
+  "author": {
+    "name": "Daily Context contributors"
+  },
+  "license": "MIT",
+  "keywords": ["productivity", "provenance", "daily-notes", "weekly-review", "agent-skills"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Daily Context",
+    "shortDescription": "Traceable daily work and weekly synthesis.",
+    "longDescription": "Capture AI-assisted work, preserve its evidence, maintain current tasks and decisions, and generate source-linked daily and weekly views.",
+    "developerName": "Daily Context contributors",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Update my daily context from this session.",
+      "Generate this week's synthesis and next-week plan.",
+      "Trace a decision back to its evidence."
+    ],
+    "brandColor": "#315C4B"
+  }
+}

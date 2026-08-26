@@ -1,0 +1,16 @@
+{
+  "description": "Example only. Prefer `daily-context auto enable --host codex` so paths are configured safely.",
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "daily-context capture-session --host codex",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

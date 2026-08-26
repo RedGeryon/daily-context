@@ -1,0 +1,6 @@
+interface:
+  display_name: "Daily Context"
+  short_description: "Traceable daily work and weekly reviews"
+  default_prompt: "Use $daily-context to update my source-linked daily context from this work."
+policy:
+  allow_implicit_invocation: true
