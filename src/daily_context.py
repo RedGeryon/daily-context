@@ -9,6 +9,7 @@ import datetime as dt
 import hashlib
 import json
 import os
+import shlex
 import shutil
 import sys
 import time
@@ -850,7 +851,12 @@ def command_auto(args: argparse.Namespace) -> None:
     json_write(root / CONFIG_NAME, config)
     write_pointer(workspace, root)
     if args.action == "enable":
-        command = f"daily-context capture-session --host {args.host}"
+        installed = shutil.which("daily-context")
+        if installed:
+            launcher = shlex.quote(str(Path(installed).resolve()))
+        else:
+            launcher = f"{shlex.quote(sys.executable)} {shlex.quote(str(Path(__file__).resolve()))}"
+        command = f"{launcher} capture-session --host {args.host}"
         if args.host == "codex":
             merge_hook(workspace / ".codex" / "hooks.json", "SessionEnd", command)
         else:

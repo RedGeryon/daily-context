@@ -26,14 +26,16 @@ chmod +x "$INSTALL_ROOT/bin/daily-context"
 ln -sf "$INSTALL_ROOT/bin/daily-context" "$BIN_ROOT/daily-context"
 
 if [ "$INSTALL_CODEX" -eq 1 ]; then
-  CODEX_SKILL_ROOT="$USER_HOME/.agents/skills"
+  CODEX_PROFILE_ROOT=${CODEX_HOME:-"$USER_HOME/.agents"}
+  CODEX_SKILL_ROOT="$CODEX_PROFILE_ROOT/skills"
   mkdir -p "$CODEX_SKILL_ROOT"
   rm -rf "$CODEX_SKILL_ROOT/daily-context"
   cp -R "$SCRIPT_DIR/skills/daily-context" "$CODEX_SKILL_ROOT/daily-context"
 fi
 
 if [ "$INSTALL_CLAUDE" -eq 1 ]; then
-  CLAUDE_SKILL_ROOT="$USER_HOME/.claude/skills"
+  CLAUDE_PROFILE_ROOT=${CLAUDE_CONFIG_DIR:-"$USER_HOME/.claude"}
+  CLAUDE_SKILL_ROOT="$CLAUDE_PROFILE_ROOT/skills"
   mkdir -p "$CLAUDE_SKILL_ROOT"
   rm -rf "$CLAUDE_SKILL_ROOT/daily-context"
   cp -R "$SCRIPT_DIR/skills/daily-context" "$CLAUDE_SKILL_ROOT/daily-context"
@@ -41,6 +43,6 @@ fi
 
 echo "Installed Daily Context $($INSTALL_ROOT/bin/daily-context --version)"
 echo "CLI: $BIN_ROOT/daily-context"
-if [ "$INSTALL_CODEX" -eq 1 ]; then echo "Codex skill: $USER_HOME/.agents/skills/daily-context"; fi
-if [ "$INSTALL_CLAUDE" -eq 1 ]; then echo "Claude skill: $USER_HOME/.claude/skills/daily-context"; fi
+if [ "$INSTALL_CODEX" -eq 1 ]; then echo "Codex skill: $CODEX_SKILL_ROOT/daily-context"; fi
+if [ "$INSTALL_CLAUDE" -eq 1 ]; then echo "Claude skill: $CLAUDE_SKILL_ROOT/daily-context"; fi
 echo "Next: daily-context init ./daily_context --workspace ."

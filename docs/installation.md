@@ -12,7 +12,7 @@ The installer places the dependency-free CLI under the user's local data directo
 
 Use `./install.sh --codex` or `./install.sh --claude` to install only one skill adapter. Ensure `~/.local/bin` is on `PATH`.
 
-For a nonstandard home location, set `DAILY_CONTEXT_INSTALL_HOME` for the installer. Standard installations should leave it unset.
+For a nonstandard home location, set `DAILY_CONTEXT_INSTALL_HOME`. The installer also respects `CODEX_HOME` and `CLAUDE_CONFIG_DIR`, so work-specific profiles receive the skill in the profile that is actually active.
 
 ## Codex plugin
 

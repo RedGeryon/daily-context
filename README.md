@@ -39,6 +39,7 @@ daily-context auto enable --host claude --workspace .
 ```
 
 Run the command once for each host you use in that workspace. Existing hook settings are preserved and backed up before the first change.
+The generated hook uses the CLI's resolved absolute path, so session capture does not depend on a host application's shell `PATH`.
 
 Auto mode deliberately does **not** declare the session's statements true. It stores a session receipt and an available transcript under the Git-ignored `raw/` directory, marks the source pending, and refreshes the indexes. The next agent update reviews that evidence and promotes only supported facts, tasks, decisions, and artifacts.
 
